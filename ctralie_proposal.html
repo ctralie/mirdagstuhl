@@ -1,0 +1,102 @@
+<html>
+    <body>
+        <h1>Searching for Excellent Undergraduate Neural MIR Assignments</h1>
+
+        <h2>Motivation/Challenges</h2>
+        <p>
+            Teaching MIR at the undergraduate level presents some unique challenges, particularly at a small liberal arts college.  Some challenges include:
+            <ul>
+                <li>
+                    <p>
+                        <b>Minimal assumed prerequisites</b>.  At Ursinus, for instance, we only require one semester of intro to computer science, as well as calc 1 (and often I waive the calc 1 prerequisite).  But this is also an advantage, as it means that we can include the course in our digital studies minor and open it up to the college, including music majors.  But it does mean that I have to go over a lot of background for the neural networks part of the course, which I cover in <a href = "https://www.youtube.com/watch?v=XBk4BZseKZg&list=PLxGzv4uunL64oPNYSkBOt1lECGrVK6jru&index=64">this video series</a>
+                    </p>
+                </li>
+                <li>
+                    <p>
+                        <b>Highly constrained budgets</b>.  This means, for example, that paying for cloud computing resources for an entire class is out of the question.  But students are also limited in the technology they have available to them.  In particular, their laptops are often crappy, to the point where we've started our own laptop sharing program in the department by repurposing second hand chromebooks with Linux.  But these are far from computational powerhouses.
+                    </p>
+                </li>
+                <li>
+                    <p>
+                        <b>Constrained course offerings</b>.  Students have so many other humanities requirements (which is great!), and we only have three full time teachers across the entire CS curriculum, so this means we only get to teach this once every other year (and we're lucky we can do it even that often!).  The most related course, artificial intelligence and machine learning, is also a single course that only occurs once every other year.  This shifts the emphasis of topics a bit, because I want to make sure (for instance) that the students have lots of time to understand Fourier, but this comes at the expense of going deep with deep learning (pun intended).  <b>So this means there is usually only time for one assignment on deep learning</b>
+                    </p>
+                </li>
+                <li>
+                    <p>
+                        <b>Student time management</b>.  Students at small liberal arts colleges have myriad interests.  For instance, at Ursinus, 85% of our students are in athletics.  And the majority will not continue on to grad school.  So their motivations and investment in the material can vary, and I have to really help them manage their time carefully, particularly on complex assignments.
+                    </p>
+                </li>
+            </ul>
+        </p>
+
+        <h2>Design Constraints for Assignments</h2>
+        <p>
+            In spite of the above challenges, I've felt it's important to expose them to deep learning in the context of MIR, and I devoted <a href = "https://ursinus-cs372-s2023.github.io/CoursePage/index.html#schedule">an entire unit to this</a> in the most recent iteration of the course.  Given the above context, here are constraints I feel are important for a deep learning-based assignment in MIR at an undergraduate small liberal arts college
+        </p>
+        <ol>
+            <li>
+                It's gotta be cool!
+            </li>
+            <li>
+                The system shows improvements over classical signal processing/statistical model-based techniques, or it complements classical techniques in an important way (otherwise, what's the point?).
+            </li>
+            <li>
+                The system allows scaffolding from concepts earlier in the course
+            </li>
+            <li>
+                The system requires relatively little training data
+            </li>
+            <li>
+                The system converges to an interesting solution with relatively little training, even on the CPU
+            </li>
+            <li>
+                The system is an appropriate challenge for the students to code mostly from scratch given time constraints, or it is possible for students to build on an existing system in one assignment
+            </li>
+        </ol>
+
+        <h4>Differentiable Digital Signal Processing: Checking All The Boxes?</h4>
+        <p>
+            The last time I taught this course, my feeling was that <a href = "https://magenta.tensorflow.org/ddsp">differentiable digital signal processing (DDSP)</a> satisfied all of these constraints:
+            <ol>
+                <li>
+                    Students love the singing violins!
+                </li>
+                <li>
+                    This is arguable when compared to <a href = "http://www.iansimon.org/audio_analogies/">traditional concatenative audio systems</a>, but it is certainly clear how valuable it is to automate learning a complex set of parameters for additive and subtractive synthesis
+                </li>
+               <li>
+                Students had an assignment on vocoders for cross-synthesis, and they'd had an assignment on <a href = "https://www.audiolabs-erlangen.de/resources/MIR/2015-ISMIR-LetItBee">audio musaicing</a>.  I also taught them harmonics and instantaneous frequency <a href = "https://ursinus-cs372-s2023.github.io/Modules/Module6/Video0">in the context of FM synthesis</a>, so they were prepared to deal with modeling harmonics
+               </li> 
+               <li>
+                The system gets good results it only requires about 15 minutes of violin audio from <a href = "https://musopen.org/music/13574-violin-partita-no-1-bwv-1002/">Josh Garner</a>
+               </li>
+               <li>
+                Students will know if their system is training after a few minutes, even running it on the CPU.  Then, full training only takes 10-20 minutes on the GPU.  This is important, because, as we discovered the hard way, the free tier of Google colab only allows 2 hours of GPU time per user per day.
+               </li>
+               <li>
+                This is the part I struggled with the most the first time I ran this (only 5/20 students got a completely working system in the end), but I think it can be managed by reordering the tasks and scaffolding a bit more.  In particular, I need to split the assignment up into 2-3 deadlines, one of which is entirely focused on doing additive synthesis without loops using only torch operations (since this is crucial for torch's autograd to work efficiently)
+               </li>
+            </ol>
+        </p>
+        <p>
+            The assignment I came up with is at <a href = "https://ursinus-cs372-s2023.github.io/CoursePage/Assignments/HW6_StringAlong/">this link</a>
+        </p>
+
+        <h4>What Else Checks All The Boxes?</h4>
+        <p>
+            Below are some ideas I believe may check all of these boxes:
+            <ul>
+                <li>
+                    <a href = "https://www.eurasip.org/Proceedings/Eusipco/eusipco2019/Proceedings/papers/1570533824.pdf">TCNs</a> for audio beat tracking (I currently have an assignment on beat tracking that uses <a href = "https://ursinus-cs372-s2023.github.io/CoursePage/Assignments/HW4_RhythmAnalysis/">HMMs</a>)
+                </li>
+                <li>
+                    <a href = "https://github.com/SonyCSLParis/pesto/">PESTO</a>
+                </li>
+                <li>
+                    <a href = "https://pixl.cs.princeton.edu/pubs/Yang_2023_WBS/yang-white-box-2023.pdf">White Box Search over Audio Synthesis Parameters</a> from last year's ISMIR
+                </li>
+            </ul>
+             But I am very curious to hear what other ideas people have!
+        </p>
+    </body>
+</html>
